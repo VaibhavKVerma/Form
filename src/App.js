@@ -1,14 +1,15 @@
+import axios from "axios";
 import { useState } from "react";
 import "./App.css";
 const App = () => {
   const [state, setState] = useState({
     jobdetails: "",
     jobdescription: "",
-    experience: "",
+    experience: "0",
     location: "",
-    category: "",
-    functionalarea: "",
-    graduatingyear: "",
+    category: "softwaredeveloper",
+    functionalarea: "banglore",
+    graduatingyear: "2020",
     tags: "",
   });
   const handleInput = (e) => {
@@ -24,14 +25,15 @@ const App = () => {
       location: state.location.split(" ").filter((ele) => ele.length > 0),
     };
     console.log(newRecord);
+    axios.post("/v1jobs/job", newRecord);
     setState({
       jobdetails: "",
       jobdescription: "",
-      experience: "",
+      experience: "0",
       location: "",
-      category: "",
-      functionalarea: "",
-      graduatingyear: "",
+      category: "softwaredeveloper",
+      functionalarea: "banglore",
+      graduatingyear: "2020",
       tags: "",
     });
   };
